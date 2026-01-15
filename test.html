@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Loader</title>
+</head>
+<body>
+    <div id="content">Loading...</div>
+
+    <script>
+        fetch('./data.txt')
+            .then(res => {
+                if (!res.ok) throw new Error();
+                return res.text();
+            })
+            .then(data => {
+                document.getElementById('content').innerText = data;
+            })
+            .catch(() => {
+                document.getElementById('content').innerText = 'Error: External file not found.';
+            });
+    </script>
+</body>
+</html>
